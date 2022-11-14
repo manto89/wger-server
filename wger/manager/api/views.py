@@ -103,7 +103,7 @@ class WorkoutViewSet(viewsets.ModelViewSet):
             return Response("Please provide an exercise ID in the 'id' GET parameter")
 
         exercise = get_object_or_404(Exercise, pk=execise_id)
-        logs = exercise.workoutlog_set.filter(
+        logs = exercise.exercise_base.workoutlog_set.filter(
             user=self.request.user,
             weight_unit__in=(1, 2),
             repetition_unit=1,
